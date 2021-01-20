@@ -11,17 +11,17 @@ const Other = () => {
       <Tab.Screen 
          name="TrackList" 
         component={TrackListScreen} 
-        options={{title:"TrackList"}}
+        options={{headerShown:false}}
         />
       <Tab.Screen 
            name="TrackCreate" 
            component={TrackCreateScreen} 
-           options={{title:'TrackCreate'}}
+           options={{headerShown:false}}
            />
       <Tab.Screen 
           name="Account" 
           component={AccountScreen} 
-          options={{title:'Account'}}
+          options={{headerShown:false}}
           />
     </Tab.Navigator>
   );

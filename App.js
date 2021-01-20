@@ -6,6 +6,7 @@ import TrackDetailScreen  from './src/screens/TrackDetailScreen';
 import { Provider as AuthProvider} from './src/context/AuthContext'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+import { setNavigator } from './src/navigationRef';
 
 const Stack = createStackNavigator();
 
@@ -22,13 +23,16 @@ const App =() => {
         <Stack.Screen 
             name="SigninScreen" 
             component={SigninScreen} 
-            options={{title:'Signin'}}
+            options={{headerShown:false}}
           />
         <Stack.Screen 
             name="AccountScreen"
             component={Other} 
-            options={{title:'Account'}}/>
-        <Stack.Screen name="TrackDetail" component={TrackDetailScreen} options={{title:"trackDetail"}}/>
+            options={{headerShown:false}}/>
+        <Stack.Screen 
+            name="TrackDetail" 
+            component={TrackDetailScreen} 
+            options={{title:' '}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
