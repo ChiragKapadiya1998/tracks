@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
-import {View,StyleSheet,Button,TouchableOpacity} from 'react-native';
-import {Text, Input} from 'react-native-elements';
+import {View,StyleSheet,TouchableOpacity} from 'react-native';
+import {Text, Button,Input} from 'react-native-elements';
 
  const AuthFrom =({headerText,errorMessage,submitButtonText,onSubmit})=> {
     const [email ,setEmail]=useState('test@test.com');
@@ -39,9 +39,9 @@ import {Text, Input} from 'react-native-elements';
         </TouchableOpacity>
         {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text>:null}
         <View style={styles.button}>
-            <Button title={submitButtonText} onPress={ ()=> onSubmit({email,password }) }/>
+            <Button title={submitButtonText} type='outline'  onPress={ ()=> onSubmit({email,password}) }/>
         </View>
-  
+
 </>
     )
 }

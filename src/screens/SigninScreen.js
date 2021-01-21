@@ -2,7 +2,8 @@ import React,{useContext} from 'react';
 import {View,StyleSheet,Text,SafeAreaView,Button,TouchableOpacity} from 'react-native';
 import AuthFrom from '../components/AuthFrom';
 import {Context as AuthContext} from '../context/AuthContext';
-import NavLink from '../components/NavLink'
+import NavLink from '../components/NavLink';
+
 const SigninScreen =({navigation})=>{
 
     const{state,Signin}=useContext(AuthContext);

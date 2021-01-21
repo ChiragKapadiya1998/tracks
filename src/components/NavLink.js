@@ -1,21 +1,22 @@
-import React from 'react'
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
+import React from "react";
+import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
 
-const NavLink = ({text,onsubmit}) => {
-    return (
-          <TouchableOpacity  onPress={onsubmit}>
-                <Text style={styles.textnavi}>{text}</Text>
-            </TouchableOpacity>
-    )
-}
-
+const Navlink = ({ navigation, text, onsubmit }) => {
+  return (
+    <TouchableOpacity
+      onPress={onsubmit}
+    >
+      <Text style={styles.link}>{text}</Text>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
-    textnavi:{
-        marginHorizontal:25,
-        marginVertical:10,
-        color:'#5f27cd'
-        
-    }
-})
-export default NavLink;
+  link: {
+    marginLeft: 10,
+    marginTop: 10,
+    color: "#0000ff",
+  },
+});
+
+export default Navlink;

@@ -5,9 +5,9 @@ import SignupScreen from './src/screens/SignupScreen';
 import TrackDetailScreen  from './src/screens/TrackDetailScreen';
 import { Provider as AuthProvider} from './src/context/AuthContext'
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
-import { setNavigator } from './src/navigationRef';
-
+import { createStackNavigator } from '@react-navigation/stack';
+import {Provider as LocationProvider} from './src/context/LoactionContext'
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 const Stack = createStackNavigator();
 
 
@@ -34,6 +34,11 @@ const App =() => {
             component={TrackDetailScreen} 
             options={{title:' '}}/>
       </Stack.Navigator>
+      <Stack.Screen 
+           name="ResolveAuth" 
+           component={ResolveAuthScreen} 
+           //options={{headerShown:false}} //header is not dispaly
+           />
     </NavigationContainer>
   );
 }
@@ -41,8 +46,10 @@ const App =() => {
 
 export default () => {
   return (
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <LocationProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </LocationProvider>
   );
 };

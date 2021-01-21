@@ -22,7 +22,7 @@ const SignupScreen = ({navigation}) =>{
          headerText="Sign Up for Tracker"
          errorMessage={state.errorMessage}
          submitButtonText='Sign Up'
-         onSubmit={Signup,() => navigation.navigate('AccountScreen')}
+         onSubmit={Signup}
          />
         <NavLink 
             onsubmit={()=>navigation.navigate('SigninScreen')} 

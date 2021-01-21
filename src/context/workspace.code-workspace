@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../../../track-server"
+			"path": "../.."
 		},
 		{
-			"path": "../.."
+			"path": "../../../../Downloads/track-server"
 		}
 	],
 	"settings": {}
