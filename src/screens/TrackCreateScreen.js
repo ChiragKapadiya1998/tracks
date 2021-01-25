@@ -1,44 +1,46 @@
-import '../screens/_MockLocation'
-import React,{useState,useEffect,useContext} from 'react';
+import '../_MockLocation';
+import React,{useContext,useCallback} from 'react';
 import {View,StyleSheet} from 'react-native';
 import {Text } from 'react-native-elements';
-import {SafeAreaView} from 'react-navigation';
-import {requestPermissionsAsync,watchPositionAsync,Accuracy} from 'expo-location';
+import {SafeAreaView, withNavigationFocus  } from 'react-navigation';
 import Map from '../components/Map';
-import {Context as LoactionContext} from '../context/LoactionContext'
-const TrackCreateScreen =()=>{
-    const [err,setErr] =useState(null);
-     
-    const {addLoction}=useContext(LoactionContext)
+import {Context as LoactionContext} from '../context/LoactionContext';
+import useLocation from '../hooks/useLocation';
+import TrackFrom from '../components/TrackFrom';
+import { LinearGradient } from 'expo-linear-gradient';
+const TrackCreateScreen =({isFocused})=>{
+    // console.log(isFocused);
+   
+    const {state:{recording},addLoction}=useContext(LoactionContext);
+    
+    const callback=useCallback(locations => {
+        addLoction(locations, recording);
+      },[   recording]);
 
-    const startWatching =async ()=>{
-        try{
-            await requestPermissionsAsync();
-            await watchPositionAsync({
-                accuracy:Accuracy.BestForNavigation,
-                timeInterval:1000,
-                distanceInterval:10
-            },location=>{
-                addLoction(location);
-            });
-        }catch(e){
-            setErr(e);
-            
-        }
-    }
-    useEffect(()=>{
-     startWatching();
-    },[])
+    const [err] = useLocation(isFocused || recording,callback);
     return (
-    <SafeAreaView forceInset={{top:'always'}}>
-        <Text h3>Create a Track</Text>
-        <Map /> 
-        {err ? <Text>Please enable loaction services</Text>:null}
-    </SafeAreaView>
+        <SafeAreaView forceInset={{top:'always'}} style={{flex:1,backgroundColor:'#c7ecee'}}>
+            <LinearGradient
+                // Background Linear Gradient
+                colors={['rgba(0,255,0,0.3)', 'transparent']}
+                style={styles.background}
+            />
+            <Text h3>Create a Track</Text>
+            <Map /> 
+            {err ? <Text>Please enable loaction services</Text>:null}
+            <TrackFrom />
+        </SafeAreaView>
         );
 };
 const styles=StyleSheet.create({
+    background: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: '100%',
+      },
 
 });
 
-export default TrackCreateScreen;
+export default withNavigationFocus(TrackCreateScreen);

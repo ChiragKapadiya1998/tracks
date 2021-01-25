@@ -39,7 +39,7 @@ import {Text, Button,Input} from 'react-native-elements';
         </TouchableOpacity>
         {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text>:null}
         <View style={styles.button}>
-            <Button title={submitButtonText} type='outline'  onPress={ ()=> onSubmit({email,password}) }/>
+            <Button title={submitButtonText} type='outline'  onPress={ ()=> onSubmit({email,password },()=>navigation.navigate('TrackListScreen'))}/>
         </View>
 
 </>
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
         backgroundColor:'#c7ecee',
     },
     header:{
-        margin:15,
         justifyContent:'center',
         alignItems:'center'
     },
@@ -61,30 +60,30 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     input:{
-        marginHorizontal: 15,
-        marginTop:30,
+        marginHorizontal: '5%',
+        marginTop:'10%',
         justifyContent:'center',
         alignItems:'center'
     },
     emailInput:{
-        marginVertical:10,
+        marginVertical:'2%',
     },
     passwordInput:{
-        marginTop:10,
+        marginTop:'2%',
     },
     showpassword:{
      alignSelf:'flex-end',
-     marginHorizontal:25
+     marginHorizontal:'6%'
     },
     errorMessage:{
      fontSize: 16,
      color:'red',
-     marginHorizontal:25,
+     marginHorizontal:'6%',
   
     },
     button:{
-        marginHorizontal:25,
-        marginVertical:10,
+        marginHorizontal:'6%',
+        marginVertical:'3%',
     }
 })
 export default AuthFrom;

@@ -13,8 +13,8 @@ const Navlink = ({ navigation, text, onsubmit }) => {
 
 const styles = StyleSheet.create({
   link: {
-    marginLeft: 10,
-    marginTop: 10,
+    marginLeft: '6%',
+    marginTop: '3%',
     color: "#0000ff",
   },
 });

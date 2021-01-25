@@ -33,10 +33,6 @@ const styles=StyleSheet.create({
         justifyContent:'center',
         backgroundColor:'#ced6e0',
     },
-    textnavi:{
-        marginHorizontal:25,
-        color:'#5f27cd'
-    }
 });
 
 export default SigninScreen;

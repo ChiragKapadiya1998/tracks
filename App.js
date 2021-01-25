@@ -3,10 +3,11 @@ import Other from './src/screens/Other'
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import TrackDetailScreen  from './src/screens/TrackDetailScreen';
-import { Provider as AuthProvider} from './src/context/AuthContext'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {Provider as LocationProvider} from './src/context/LoactionContext'
+import { Provider as AuthProvider} from './src/context/AuthContext';
+import {Provider as TrackProvider} from './src/context/TrackContext'
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 const Stack = createStackNavigator();
 
@@ -46,10 +47,12 @@ const App =() => {
 
 export default () => {
   return (
-    <LocationProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </LocationProvider>
+    <TrackProvider>
+        <LocationProvider>
+            <AuthProvider>
+                <App />
+            </AuthProvider>
+        </LocationProvider>
+    </TrackProvider>
   );
 };
