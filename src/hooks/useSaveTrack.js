@@ -8,7 +8,7 @@ export default () =>{
  const {state:{name,locations},reset}=useContext(LoactionContext);
 //console.log(name,locations.length);
 
- const saveTrack=async() => {
+ const saveTrack= () => {
   
   createTreack(name,locations);
    reset(); 

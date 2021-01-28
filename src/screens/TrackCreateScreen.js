@@ -19,12 +19,13 @@ const TrackCreateScreen =({isFocused})=>{
 
     const [err] = useLocation(isFocused || recording,callback);
     return (
-        <SafeAreaView forceInset={{top:'always'}} style={{flex:1,backgroundColor:'#c7ecee'}}>
-            <LinearGradient
-                // Background Linear Gradient
-                colors={['rgba(0,255,0,0.3)', 'transparent']}
-                style={styles.background}
-            />
+        <SafeAreaView forceInset={{top:'always'}} style={{flex:1,backgroundColor:'#fff'}}>
+              <LinearGradient
+        colors={['#c7ecee', 'white']}
+        style={styles.background}
+        start={{ x: 0.9, y: 0.6 }}
+        end={{ x: 0.9, y: 1 }}
+      />
             <Text h3>Create a Track</Text>
             <Map /> 
             {err ? <Text>Please enable loaction services</Text>:null}

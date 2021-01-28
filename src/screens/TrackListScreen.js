@@ -4,62 +4,56 @@ import { View,
     Text,
     FlatList,
     TouchableOpacity,
-    
     Button,} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import { LinearGradient } from 'expo-linear-gradient';
 import {Context as TrackContext} from '../context/TrackContext';
 
-import { ListItem } from "react-native-elements";
-
 const TrackListScreen = ({navigation}) =>{
     
-const {state,fetchTracks}=useContext(TrackContext);
+const {state,createTreack}=useContext(TrackContext);
 console.log(state);
 
 useEffect(() => {
-    const listener = navigation.addListener("focus", () => {
-      fetchTracks;
-    });
-
-    return listener;
-
-    // return () => {
-    //   listener.remove();
-    // };
+  createTreack();
   }, []);
 
 
     return <>
-    <SafeAreaView forceInset={{top:'always'}} style={{flex:1}}>
+    <SafeAreaView forceInset={{top:'always'}} style={{flex:1,backgroundColor:'#fff'}}>
     <LinearGradient
-        // Background Linear Gradient
-        colors={['rgba(0,255,0,0.3)', 'transparent']}
+        colors={['#c7ecee', 'white']}
         style={styles.background}
+        start={{ x: 0.9, y: 0.6 }}
+        end={{ x: 0.9, y: 1 }}
       />
      {/* <NavigationEvents onWillFocus={fetchTracks} />  */}
      <Text style={{ fontSize: 20 }}>TrackListScreen</Text>
-        <FlatList
+     <Text>{state}</Text>
+       {/* {state.map((item)=>{
+         return(<Text>{item.name}</Text>)
+       })} */}
+        {/* <FlatList
           data={state}
           keyExtractor={(item) => item._id}
           renderItem={(item) => {
             return (
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("TrackDetail", { _id:item._id });
-                }}
-              >
-                <ListItem chevron title={item.name} />
-              </TouchableOpacity>
+               <Text>{item.name}</Text>
             );
           }}
-        />
-        <Button
-          title="Go to Track details"
-          onPress={() => {
-            navigation.navigate("TrackDetail", { _id: item._id });
-          }}
-        />
+        /> */}
+        <TouchableOpacity  onPress={()=>navigation.navigate('TrackDeScreen')}>
+                <View style={{padding: 10,
+                                justifyContent:'center',
+                                alignItems:'center',
+                                borderRadius:30,
+                                shadowColor:'black',
+                                shadowOpacity:10,
+                                shadowRadius:10}}>
+                  <Text>Go to Track details</Text>
+                  </View>
+            </TouchableOpacity>
+
     </SafeAreaView>
     </>
 };

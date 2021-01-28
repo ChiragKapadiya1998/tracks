@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
-import {View,StyleSheet,TouchableOpacity} from 'react-native';
+import {View,StyleSheet,TouchableOpacity,Image,TextInput} from 'react-native';
 import {Text, Button,Input} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
  const AuthFrom =({headerText,errorMessage,submitButtonText,onSubmit})=> {
     const [email ,setEmail]=useState('test@test.com');
@@ -8,9 +9,6 @@ import {Text, Button,Input} from 'react-native-elements';
     const [show,setShow]=useState(true)
     return (
         <>
-        <View style={styles.header}>
-            <Text style={styles.text}>{headerText}</Text>
-        </View>
         <View style={styles.input}>
             <Input  
                style={styles.emailInput} 
@@ -20,6 +18,13 @@ import {Text, Button,Input} from 'react-native-elements';
                onChangeText={setEmail}
                autoCapitalize='none'
                autoCorrect={false}
+               leftIcon={
+                <Icon
+                  name='user'
+                  size={24}
+                  color='black'
+                />
+              }
                />
             <Input 
                 secureTextEntry={show}
@@ -30,6 +35,14 @@ import {Text, Button,Input} from 'react-native-elements';
                 onChangeText={setPassword}
                 autoCapitalize='none'
                 autoCorrect={false}
+                leftIcon={
+                    <Icon
+                      name='lock'
+                      size={24}
+                      color='black'
+                    />
+                  
+                  }
                 />
         </View>
         <TouchableOpacity onPress={()=>{ setShow(show===true?false:true)}}>
@@ -39,7 +52,9 @@ import {Text, Button,Input} from 'react-native-elements';
         </TouchableOpacity>
         {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text>:null}
         <View style={styles.button}>
-            <Button title={submitButtonText} type='outline'  onPress={ ()=> onSubmit({email,password },()=>navigation.navigate('TrackListScreen'))}/>
+            <TouchableOpacity  onPress={ ()=> onSubmit({email,password },()=>navigation.navigate('TrackListScreen'))}>
+                <View style={{padding: 10,backgroundColor:'#54a0ff',justifyContent:'center',alignItems:'center',borderRadius:30,shadowColor:'black',shadowOpacity:10,shadowRadius:10}}><Text>{submitButtonText}</Text></View>
+            </TouchableOpacity>
         </View>
 
 </>

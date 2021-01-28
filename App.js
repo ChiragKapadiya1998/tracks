@@ -3,18 +3,25 @@ import Other from './src/screens/Other'
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import TrackDetailScreen  from './src/screens/TrackDetailScreen';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {Provider as LocationProvider} from './src/context/LoactionContext'
 import { Provider as AuthProvider} from './src/context/AuthContext';
 import {Provider as TrackProvider} from './src/context/TrackContext'
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+
 const Stack = createStackNavigator();
 
-
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'rgb(255, 45, 85)',
+  },
+};
 const App =() => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <Stack.Navigator>
         <Stack.Screen 
            name="SignupScreen" 

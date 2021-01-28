@@ -8,10 +8,11 @@ const AccountScreen =({navigation})=>{
     return (
         
         <View style={{backgroundColor:'#c7ecee',flex:1}}>
-        <LinearGradient
-        // Background Linear Gradient
-        colors={['rgba(0,255,0,0.3)', 'transparent']}
+         <LinearGradient
+        colors={['#c7ecee', 'white']}
         style={styles.background}
+        start={{ x: 0.9, y: 0.6 }}
+        end={{ x: 0.9, y: 1 }}
       />
         <SafeAreaView >
                 <View style={{marginHorizontal:'5%',marginVertical:'10%',backgroundColor:'#fff'}}>

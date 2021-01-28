@@ -32,7 +32,7 @@ const stopRecording =dispatch=>()=>{
 const addLoction= dispatch => (locations,recording) =>{
     dispatch({type:'add_current_location', payload:locations});
     if(recording){
-        dispatch({type:'add_location',payload:location})
+        dispatch({type:'add_location',payload:locations})
     }
 }
 const reset=dispatch=>()=>{

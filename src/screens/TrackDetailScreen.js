@@ -9,7 +9,7 @@ import MapView, { Polyline } from "react-native-maps";
 const TrackDetailScreen =({navigation,route})=>{
 const {state} =useContext(TrackContext);
 
-const _id = route.params._id;
+const _id = route.params;
 const track = state.find((t) => t._id === _id);
     React.useLayoutEffect(() => {
         navigation.setOptions({
